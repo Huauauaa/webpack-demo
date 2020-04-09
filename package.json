@@ -1,0 +1,25 @@
+{
+  "name": "webpack-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Huauauaa/webpack-demo.git"
+  },
+  "keywords": [],
+  "author": "Harvey <harvey0379@163.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Huauauaa/webpack-demo/issues"
+  },
+  "homepage": "https://github.com/Huauauaa/webpack-demo#readme",
+  "devDependencies": {
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
