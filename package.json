@@ -21,6 +21,7 @@
   "homepage": "https://github.com/Huauauaa/webpack-demo#readme",
   "devDependencies": {
     "css-loader": "^3.5.1",
+    "git-revision-webpack-plugin": "^3.0.4",
     "html-webpack-plugin": "^4.2.0",
     "style-loader": "^1.1.3",
     "webpack": "^4.42.1",

@@ -1,5 +1,7 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const GitRevisionPlugin = require('git-revision-webpack-plugin');
+const gitRevisionPlugin = new GitRevisionPlugin();
 
 module.exports = {
   entry: './src/index.js',
@@ -40,7 +42,13 @@ module.exports = {
   },
   plugins: [
     new htmlWebpackPlugin({
+      title: 'awesome webpack',
       template: './public/index.html',
+      gitMessage: {
+        version: gitRevisionPlugin.version(),
+        commithash: gitRevisionPlugin.commithash(),
+        branch: gitRevisionPlugin.branch(),
+      },
     }),
   ],
 };
