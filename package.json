@@ -24,6 +24,11 @@
   "homepage": "https://github.com/Huauauaa/webpack-demo#readme",
   "dependencies": {
     "css-loader": "^5.2.4",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-webpack-plugin": "^2.5.4",
     "file-loader": "^6.2.0",
     "html-loader": "^2.1.2",
     "less": "^4.1.1",
@@ -46,5 +51,10 @@
   "browserslist": [
     "defaults",
     "not IE 11"
-  ]
+  ],
+  "eslintConfig": {
+    "extends": [
+      "eslint-config-airbnb-base"
+    ]
+  }
 }

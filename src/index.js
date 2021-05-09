@@ -1,5 +1,5 @@
-import data from "./data.json";
-import "./index.css";
-import "./home.less";
+const demo = () => {
+  console.log('this is a demo');
+};
 
-console.log(data, 1, 2);
+demo();
