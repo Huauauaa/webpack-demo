@@ -75,8 +75,12 @@ const config = {
         },
       },
       {
-        test: /.html$/,
-        loader: "html-withimg-loader",
+        test: /.html$/i,
+        loader: "html-loader",
+        options: {
+          esModule: false,
+          minimize: isProduction,
+        },
       },
 
       // Add your rules for custom modules here
