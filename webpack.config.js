@@ -25,7 +25,7 @@ const postcssLoaderConfig = {
 const config = {
   entry: "./src/index.js",
   output: {
-    filename: "js/bundle.js",
+    filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
   },
   devServer: {
@@ -67,7 +67,7 @@ const config = {
         ],
       },
       {
-        test: /.(jpg|png)$/i,
+        test: /\.(jpg|png)$/i,
         loader: "url-loader",
         options: {
           limit: 8 * 1024,
@@ -75,7 +75,7 @@ const config = {
         },
       },
       {
-        test: /.html$/i,
+        test: /\.html$/i,
         loader: "html-loader",
         options: {
           esModule: false,
