@@ -6,6 +6,22 @@ const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plug
 
 const isProduction = process.env.NODE_ENV == "production";
 
+const postcssLoaderConfig = {
+  loader: "postcss-loader",
+  options: {
+    postcssOptions: {
+      plugins: [
+        [
+          "postcss-preset-env",
+          {
+            //options
+          },
+        ],
+      ],
+    },
+  },
+};
+
 const config = {
   entry: "./src/index.js",
   output: {
@@ -24,11 +40,11 @@ const config = {
 
     new MiniCssExtractPlugin({ filename: "built.css" }),
 
-    new OptimizeCssAssetsWebpackPlugin(),
+    isProduction && new OptimizeCssAssetsWebpackPlugin(),
 
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
-  ],
+  ].filter(Boolean),
   module: {
     rules: [
       {
@@ -37,6 +53,7 @@ const config = {
           MiniCssExtractPlugin.loader,
           // "style-loader",
           "css-loader",
+          postcssLoaderConfig,
         ],
       },
       {
@@ -45,10 +62,10 @@ const config = {
           MiniCssExtractPlugin.loader,
           // "style-loader",
           "css-loader",
+          postcssLoaderConfig,
           "less-loader",
         ],
       },
-
       {
         test: /.(jpg|png)$/i,
         loader: "url-loader",
