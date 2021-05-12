@@ -1,98 +1,48 @@
+// Generated using webpack-cli https://github.com/webpack/webpack-cli
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
+const isProduction = process.env.NODE_ENV == 'production';
 
-const isProduction = process.env.NODE_ENV === 'production';
-
-const postcssLoaderConfig = {
-  loader: 'postcss-loader',
-  options: {
-    postcssOptions: {
-      plugins: [
-        [
-          'postcss-preset-env',
-          {
-            // options
-          },
-        ],
-      ],
-    },
-  },
-};
+const stylesHandler = isProduction
+  ? MiniCssExtractPlugin.loader
+  : 'style-loader';
 
 const config = {
-  entry: './src/index.js',
+  entry: ['./src/index.js', './index.html'],
   output: {
-    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
-    open: false,
     host: 'localhost',
-    port: 8080, // default 8080
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: 'index.html',
     }),
-
-    new MiniCssExtractPlugin({ filename: 'built.css' }),
-
-    isProduction && new OptimizeCssAssetsWebpackPlugin(),
-
-    new ESLintPlugin({}),
 
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
-  ].filter(Boolean),
+  ],
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          // "style-loader",
-          'css-loader',
-          postcssLoaderConfig,
-        ],
-      },
-      {
         test: /\.less$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          // "style-loader",
-          'css-loader',
-          postcssLoaderConfig,
-          'less-loader',
-        ],
+        use: [stylesHandler, 'css-loader', 'postcss-loader', 'less-loader'],
       },
       {
-        test: /\.(jpg|png)$/i,
-        loader: 'url-loader',
-        options: {
-          limit: 8 * 1024,
-          esModule: false,
-        },
+        test: /\.css$/i,
+        use: [stylesHandler, 'css-loader', 'postcss-loader'],
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        type: 'asset',
       },
       {
         test: /\.html$/i,
-        loader: 'html-loader',
-        options: {
-          esModule: false,
-          minimize: isProduction,
-        },
-      },
-
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'eslint-loader',
-        options: {
-          fix: true,
-        },
+        use: ['html-loader'],
       },
 
       // Add your rules for custom modules here
@@ -104,6 +54,8 @@ const config = {
 module.exports = () => {
   if (isProduction) {
     config.mode = 'production';
+
+    config.plugins.push(new MiniCssExtractPlugin());
   } else {
     config.mode = 'development';
   }

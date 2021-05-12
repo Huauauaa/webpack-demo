@@ -1,63 +1,28 @@
 {
-  "name": "my-webpack-project",
   "version": "1.0.0",
   "description": "My webpack project",
-  "main": "index.js",
+  "name": "my-webpack-project",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
     "serve": "webpack serve"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Huauauaa/webpack-demo.git"
-  },
-  "keywords": [],
-  "author": "Harvey",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Huauauaa/webpack-demo/issues"
-  },
-  "homepage": "https://github.com/Huauauaa/webpack-demo#readme",
-  "dependencies": {
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
     "css-loader": "^5.2.4",
-    "eslint": "^7.26.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-webpack-plugin": "^2.5.4",
-    "file-loader": "^6.2.0",
     "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.1",
     "less": "^4.1.1",
     "less-loader": "^8.1.1",
     "mini-css-extract-plugin": "^1.6.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "postcss": "^8.2.15",
     "postcss-loader": "^5.2.0",
-    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.3.0",
     "style-loader": "^2.0.0",
-    "url-loader": "^4.1.1",
-    "webpack": "^5.36.2",
-    "webpack-cli": "^4.7.0"
-  },
-  "devDependencies": {
-    "@webpack-cli/generators": "^2.1.0",
-    "html-webpack-plugin": "^5.3.1",
-    "prettier": "^2.2.1",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
-  },
-  "browserslist": [
-    "defaults",
-    "not IE 11"
-  ],
-  "eslintConfig": {
-    "extends": [
-      "eslint-config-airbnb-base"
-    ],
-    "rules": {
-      "no-console": "off"
-    }
   }
 }

@@ -1,5 +1,3 @@
-const demo = () => {
-  console.log('this is a demo');
-};
+import './index.css';
 
-demo();
+console.log('index', Date.now());
