@@ -1,5 +1,5 @@
 export function fn1() {
-  console.log('fn1')
+  console.log('1111111111');
 }
 
 export function fn2() {
