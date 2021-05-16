@@ -12,7 +12,7 @@ const stylesHandler = isProduction
 module.exports = {
   entry: ['./src/index.js', './index.html'],
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist'), //webpack5 default
     clean: true,
   },
   devServer: {
@@ -25,7 +25,7 @@ module.exports = {
       template: 'index.html',
     }),
 
-    isProduction ? new MiniCssExtractPlugin() : null,
+    isProduction && new MiniCssExtractPlugin(),
 
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
@@ -56,6 +56,9 @@ module.exports = {
   optimization: {
     splitChunks: {
       chunks: 'all',
+    },
+    runtimeChunk: {
+      name: ({ name }) => `runtime-${name}`,
     },
   },
   mode: isProduction ? 'production' : 'development',
