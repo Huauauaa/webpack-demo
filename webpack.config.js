@@ -13,6 +13,7 @@ module.exports = {
   entry: ['./src/index.js', './index.html'],
   output: {
     path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
   devServer: {
     host: 'localhost',
