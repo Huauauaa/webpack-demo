@@ -9,7 +9,7 @@ const stylesHandler = isProduction
   ? MiniCssExtractPlugin.loader
   : 'style-loader';
 
-const config = {
+module.exports = {
   entry: ['./src/index.js', './index.html'],
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -18,15 +18,17 @@ const config = {
     host: 'localhost',
     hot: true,
   },
-  devtool: 'source-map',
+  devtool: isProduction ? 'source-map' : 'eval-source-map',
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),
 
+    isProduction ? new MiniCssExtractPlugin() : null,
+
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
-  ],
+  ].filter(Boolean),
   module: {
     rules: [
       {
@@ -55,15 +57,5 @@ const config = {
       chunks: 'all',
     },
   },
-};
-
-module.exports = () => {
-  if (isProduction) {
-    config.mode = 'production';
-
-    config.plugins.push(new MiniCssExtractPlugin());
-  } else {
-    config.mode = 'development';
-  }
-  return config;
+  mode: isProduction ? 'production' : 'development',
 };
