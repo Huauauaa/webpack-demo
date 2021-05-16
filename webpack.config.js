@@ -50,6 +50,11 @@ const config = {
       // Learn more about loaders from https://webpack.js.org/loaders/
     ],
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
 };
 
 module.exports = () => {

@@ -1,3 +1,5 @@
 import './index.css';
 
-console.log('index', Date.now()());
+import(/* webpackChunkName: 'foo'*/ './foo').then((value) => {
+  console.log(value);
+});
