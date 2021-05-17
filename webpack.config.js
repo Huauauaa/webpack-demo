@@ -49,9 +49,29 @@ module.exports = {
         use: ['html-loader'],
       },
 
+      {
+        test: /\.js$/i,
+        // loader: path.resolve(__dirname, 'loaders', 'loader1.js'),
+        // loader: 'loader1',
+        use: [
+          {
+            loader: 'loader1',
+            options: {
+              name: 'Martin',
+              // id: 1,
+            },
+          },
+          'loader2',
+          'loader3',
+        ],
+      },
+
       // Add your rules for custom modules here
       // Learn more about loaders from https://webpack.js.org/loaders/
     ],
+  },
+  resolveLoader: {
+    modules: ['node_modules', path.resolve(__dirname, 'loaders')],
   },
   optimization: {
     splitChunks: {
