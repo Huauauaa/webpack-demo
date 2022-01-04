@@ -1,5 +1,5 @@
 {
-  "name": "webpack-demo",
+  "name": "webpack-sandbox",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Huauauaa/webpack-demo.git"
+    "url": "git+https://github.com/Huauauaa/webpack-sandbox.git"
   },
   "keywords": [],
   "author": "Harvey <harvey0379@163.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Huauauaa/webpack-demo/issues"
+    "url": "https://github.com/Huauauaa/webpack-sandbox/issues"
   },
-  "homepage": "https://github.com/Huauauaa/webpack-demo#readme",
+  "homepage": "https://github.com/Huauauaa/webpack-sandbox#readme",
   "devDependencies": {
     "css-loader": "^3.5.1",
     "file-loader": "^6.0.0",

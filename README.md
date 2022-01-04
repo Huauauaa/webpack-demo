@@ -1,1 +1,1 @@
-# webpack-demo
+# webpack-sandbox
