@@ -53,6 +53,10 @@ module.exports = {
         commithash: gitRevisionPlugin.commithash(),
         branch: gitRevisionPlugin.branch(),
       },
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+      },
     }),
   ],
 };
