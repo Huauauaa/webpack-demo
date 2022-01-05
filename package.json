@@ -21,7 +21,6 @@
   "homepage": "https://github.com/Huauauaa/webpack-sandbox#readme",
   "devDependencies": {
     "css-loader": "^3.5.1",
-    "file-loader": "^6.0.0",
     "git-revision-webpack-plugin": "^3.0.4",
     "html-webpack-plugin": "^4.2.0",
     "style-loader": "^1.1.3",
@@ -30,7 +29,10 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "file-loader": "^6.2.0",
+    "html-loader": "1.3.2",
     "node-sass": "^4.13.1",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^8.0.2",
+    "url-loader": "^4.1.1"
   }
 }

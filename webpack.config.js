@@ -40,7 +40,17 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader'],
+        loader: 'url-loader',
+        options: {
+          limit: 8 * 2 ** 10,
+          esModule: false,
+          name: '[hash:10].[ext]',
+        },
+      },
+      {
+        test: /\.html$/,
+        // 处理html文件中的图片, 负责引入img, 从而能被url-loader处理
+        loader: 'html-loader',
       },
     ],
   },
