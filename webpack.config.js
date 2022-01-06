@@ -11,7 +11,12 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './dist',
+    contentBase: path.resolve(__dirname, 'dist'),
+    // 启动gzip
+    compress: true,
+    port: null,
+    // 是否自动打开
+    open: false,
   },
   module: {
     rules: [
