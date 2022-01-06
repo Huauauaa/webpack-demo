@@ -52,6 +52,13 @@ module.exports = {
         // 处理html文件中的图片, 负责引入img, 从而能被url-loader处理
         loader: 'html-loader',
       },
+      {
+        exclude: /\.(css|js|html|s[ac]ss)|png|svg|jpg|gif/,
+        loader: 'file-loader',
+        options: {
+          name: '[hash:10].[ext]',
+        },
+      },
     ],
   },
   plugins: [
