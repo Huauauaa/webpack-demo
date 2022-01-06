@@ -31,6 +31,14 @@ module.exports = {
           'css-loader',
           // Compiles Sass to CSS
           'sass-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [['postcss-preset-env', {}]],
+              },
+            },
+          },
         ],
       },
       {
@@ -42,6 +50,14 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: true,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [['postcss-preset-env', {}]],
+              },
             },
           },
         ],
