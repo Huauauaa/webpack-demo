@@ -5,6 +5,18 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 
 const gitRevisionPlugin = new GitRevisionPlugin();
+const commonCssLoader = [
+  MiniCssExtractPlugin.loader,
+  'css-loader',
+  {
+    loader: 'postcss-loader',
+    options: {
+      postcssOptions: {
+        plugins: [['postcss-preset-env', {}]],
+      },
+    },
+  },
+];
 
 module.exports = {
   entry: './src/index.js',
@@ -25,44 +37,11 @@ module.exports = {
     rules: [
       {
         test: /\.s[ac]ss$/i,
-        use: [
-          // Creates `style` nodes from JS strings
-          // 'style-loader',
-          MiniCssExtractPlugin.loader,
-          // Translates CSS into CommonJS
-          'css-loader',
-          // Compiles Sass to CSS
-          'sass-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [['postcss-preset-env', {}]],
-              },
-            },
-          },
-        ],
+        use: [...commonCssLoader, 'sass-loader'],
       },
       {
         test: /\.css$/,
-        use: [
-          // { loader: 'style-loader' },
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [['postcss-preset-env', {}]],
-              },
-            },
-          },
-        ],
+        use: [...commonCssLoader],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
