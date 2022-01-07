@@ -75,6 +75,30 @@ module.exports = {
           fix: true,
         },
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          exclude: [
+            // \\ for Windows, \/ for Mac OS and Linux
+            /node_modules[\\/]core-js/,
+            /node_modules[\\/]webpack[\\/]buildin/,
+          ],
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                useBuiltIns: 'entry',
+                corejs: {
+                  version: 3,
+                },
+              },
+            ],
+          ],
+          plugins: ['@babel/plugin-transform-runtime'],
+        },
+      },
     ],
   },
   plugins: [
