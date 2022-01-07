@@ -1,9 +1,10 @@
 const path = require('path');
-const htmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const GitRevisionPlugin = require('git-revision-webpack-plugin');
-const gitRevisionPlugin = new GitRevisionPlugin();
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+
+const gitRevisionPlugin = new GitRevisionPlugin();
 
 module.exports = {
   entry: './src/index.js',
@@ -84,10 +85,21 @@ module.exports = {
           name: '[hash:10].[ext]',
         },
       },
+      /**
+       * airbnb --> eslint-config-airbnb-base@14.0.0  eslint-plugin-import@2.25.4 eslint@6.8.0
+       */
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+          fix: true,
+        },
+      },
     ],
   },
   plugins: [
-    new htmlWebpackPlugin({
+    new HtmlWebpackPlugin({
       title: 'awesome webpack',
       template: './public/index.html',
       gitMessage: {
